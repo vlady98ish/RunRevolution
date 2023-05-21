@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RunRevolution</string>
+    <string name="runners">RUNNERS`</string>
+    <string name="revolution">REVOLUTION</string>
+    <string name="run_history">Run History</string>
+
+    <string name="calories_burned">Calories Burned</string>
+    <string name="duration_km">Duration (km)</string>
+    <string name="duration">Duration</string>
+    <string name="speed">Speed (km/h)</string>
+</resources>
