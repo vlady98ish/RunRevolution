@@ -9,8 +9,9 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.runrevolution.R
 import com.example.runrevolution.utils.Constant.FOREGROUND_CHANNEL_ID
+
+import com.example.runrevolution.utils.location.LocationHandlerUtil
 import com.example.sosapplicaiton.utils.location.LocationClient
-import com.example.sosapplicaiton.utils.location.LocationHandlerUtil
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

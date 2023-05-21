@@ -8,4 +8,7 @@
     <string name="duration_km">Duration (km)</string>
     <string name="duration">Duration</string>
     <string name="speed">Speed (km/h)</string>
+
+
+    <string name="google_maps_key">AIzaSyBK9bGB0gvNAnrwqOT0a6k1J5zauA8TrVs</string>
 </resources>

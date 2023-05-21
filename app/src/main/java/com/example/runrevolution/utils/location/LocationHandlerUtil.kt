@@ -1,10 +1,11 @@
-package com.example.sosapplicaiton.utils.location
+package com.example.runrevolution.utils.location
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
 import android.location.LocationManager
 import android.os.Looper
+import com.example.sosapplicaiton.utils.location.LocationClient
 
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback

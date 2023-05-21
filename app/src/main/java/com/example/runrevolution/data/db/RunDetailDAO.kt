@@ -19,6 +19,6 @@ interface RunDetailDAO {
     suspend fun deleteRunDetail(runDetails: RunDetails)
 
     @Query("SELECT * FROM $RUNNING_TABLE")
-    suspend fun getAll(): LiveData<List<RunDetails>>
+     fun getAll(): LiveData<List<RunDetails>>
 
 }

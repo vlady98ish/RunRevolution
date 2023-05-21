@@ -6,117 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".presentation.activity.StartActivity">
 
-    <ImageView
-        android:id="@+id/background_image"
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/start"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <fragment
+            android:id="@+id/sosNavHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/sos_nav_graph" />
 
-    <View
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#80000000"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/runners"
-        android:textColor="@color/primaryColor"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="@+id/background_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/background_image"
-        app:layout_constraintVertical_bias="0.254" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/revolution"
-        android:textColor="@color/white"
-
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-
-    <EditText
-        android:layout_width="270dp"
-        android:layout_height="48dp"
-        android:background="@drawable/white_button_bg"
-        android:drawableStart="@drawable/ic_person"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:hint="Your Name"
-        android:inputType="text"
-        android:paddingHorizontal="16dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/background_image"
-        app:layout_constraintEnd_toEndOf="@+id/background_image"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/background_image"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442" />
-
-    <EditText
-        android:layout_width="270dp"
-        android:layout_height="48dp"
-        android:background="@drawable/white_button_bg"
-        android:drawableStart="@drawable/ic_height"
-        android:drawablePadding="3dp"
-        android:ems="10"
-        android:hint="Your Height"
-        android:inputType="text"
-        android:paddingHorizontal="16dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/background_image"
-        app:layout_constraintEnd_toEndOf="@+id/background_image"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/background_image"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.535" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="270dp"
-        android:layout_height="48dp"
-        android:background="@drawable/white_button_bg"
-        android:drawableStart="@drawable/ic_weight"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:hint="Your Weight"
-        android:inputType="text"
-        android:paddingHorizontal="16dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:layout_height="75dp"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="188dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="132dp"
-        android:background="@drawable/button_bg"
-        android:text="Submit"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
