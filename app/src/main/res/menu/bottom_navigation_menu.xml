@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/runFragment"
         android:title="Run"
         android:icon="@drawable/ic_run_item"/>
 
 
     <item
-        android:id="@+id/contactsFragment"
+        android:id="@+id/mapFragment"
         android:title="Map"
         android:icon="@drawable/ic_map"
         />

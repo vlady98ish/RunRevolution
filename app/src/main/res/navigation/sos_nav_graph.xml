@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.runrevolution.presentation.fragments.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_runFragment"
+            app:destination="@id/runFragment" />
+    </fragment>
     <fragment
         android:id="@+id/runFragment"
         android:name="com.example.runrevolution.presentation.fragments.RunFragment"
@@ -20,4 +24,12 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.runrevolution.presentation.fragments.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.runrevolution.presentation.fragments.MapFragment"
+        android:label="MapFragment" />
+
+    <action android:id="@+id/action_global_runningFragment"
+        app:destination="@+id/runFragment"
+        app:launchSingleTop="true"/>
 </navigation>

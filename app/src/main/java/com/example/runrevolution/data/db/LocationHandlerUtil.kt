@@ -1,11 +1,12 @@
-package com.example.runrevolution.utils.location
+package com.example.runrevolution.data.db
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
 import android.location.LocationManager
 import android.os.Looper
-import com.example.sosapplicaiton.utils.location.LocationClient
+import com.example.runrevolution.domain.repository.LocationClient
+import com.example.runrevolution.utils.location.hasLocationPermission
 
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit
 class LocationHandlerUtil(
     private val context: Context,
     private val client: FusedLocationProviderClient
-): LocationClient {
+) : LocationClient {
     @SuppressLint("MissingPermission")
     override fun getLocationUpdates(interval: Long): Flow<Location> {
         return callbackFlow {
@@ -35,7 +36,7 @@ class LocationHandlerUtil(
             val locationCallback = object : LocationCallback() {
                 override fun onLocationResult(result: LocationResult) {
                     super.onLocationResult(result)
-                    result.locations.lastOrNull()?.let {location ->
+                    result.locations.lastOrNull()?.let { location ->
 
                         launch { send(location) }
                     }
@@ -48,18 +49,17 @@ class LocationHandlerUtil(
                 Looper.getMainLooper()
             )
 
-            awaitClose{
+            awaitClose {
                 client.removeLocationUpdates(locationCallback)
             }
         }
     }
 
     private fun checkLocationPermission() {
-        if(!context.hasLocationPermission()) {
+        if (!context.hasLocationPermission()) {
             throw LocationClient.LocationException("Missing location permission")
         }
     }
-
 
 
     private fun checkLocationProviders() {
@@ -70,7 +70,7 @@ class LocationHandlerUtil(
         val isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
 
 
-        if(!isGpsEnabled && !isNetworkEnabled) {
+        if (!isGpsEnabled && !isNetworkEnabled) {
             throw LocationClient.LocationException("GPS is disabled")
         }
     }
@@ -84,15 +84,6 @@ class LocationHandlerUtil(
             .setMaxUpdateDelayMillis(TimeUnit.MINUTES.toMillis(1))
             .build()
     }
-
-
-
-
-
-
-
-
-
 
 
 }

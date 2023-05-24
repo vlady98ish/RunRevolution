@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.RunRevolution" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="colorPrimary">#A20021</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimary">#226CE0</item>
+
         <!-- Defining that new color in ColorPrimaryDark -->
-        <item name="colorPrimaryDark">#FFFF</item>
-        <item name="colorAccent">#1D348A</item>
+        <item name="android:statusBarColor">#1D348A</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="Theme.RunRevolution" parent="Base.Theme.RunRevolution" />

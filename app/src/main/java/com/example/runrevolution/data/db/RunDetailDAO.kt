@@ -7,7 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.runrevolution.domain.model.RunDetails
-import com.example.runrevolution.utils.Constant.RUNNING_TABLE
+import com.example.runrevolution.utils.other.Constant.RUNNING_TABLE
 
 @Dao
 interface RunDetailDAO {
@@ -19,6 +19,6 @@ interface RunDetailDAO {
     suspend fun deleteRunDetail(runDetails: RunDetails)
 
     @Query("SELECT * FROM $RUNNING_TABLE")
-     fun getAll(): LiveData<List<RunDetails>>
+    fun getAll(): LiveData<List<RunDetails>>
 
 }

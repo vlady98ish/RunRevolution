@@ -1,14 +1,14 @@
 package com.example.runrevolution
 
 import android.app.Application
-import com.example.runrevolution.utils.NotificationUtils
+import com.example.runrevolution.utils.other.NotificationUtils
 import dagger.hilt.android.HiltAndroidApp
 
 
 @HiltAndroidApp
-class RunApplication: Application() {
+class RunApplication : Application() {
 
-    companion object{
+    companion object {
         lateinit var instance: RunApplication
             private set
     }
@@ -19,12 +19,6 @@ class RunApplication: Application() {
         instance = this
         NotificationUtils.createNotificationChannel(this)
     }
-
-
-
-
-
-
 
 
 }
