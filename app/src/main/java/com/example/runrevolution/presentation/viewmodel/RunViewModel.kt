@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.runrevolution.domain.model.LocationDetails
+import com.example.runrevolution.domain.model.RunDetails
 import com.example.runrevolution.domain.repository.LocationRepository
+import com.example.runrevolution.domain.repository.RunDetailsRepository
 import com.example.runrevolution.presentation.service.RunningService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RunViewModel @Inject constructor(
-    private val locationRepository: LocationRepository
+    private val locationRepository: LocationRepository,
+    private val runDetailsRepository: RunDetailsRepository
 ) : ViewModel() {
 
 
@@ -27,8 +30,7 @@ class RunViewModel @Inject constructor(
     private val _distance: MutableLiveData<Float> = RunningService.totalDistance
     val distance: LiveData<Float> = _distance
 
-    //    private val _calories : MutableLiveData<Double> = RunningService.totalCalories
-//    val calories : LiveData<Double> = _calories
+
     private val _speed: MutableLiveData<Float> = RunningService.currentSpeed
     val speed: LiveData<Float> = _speed
 
@@ -58,6 +60,8 @@ class RunViewModel @Inject constructor(
 
     fun clearPoints() {
         _locationPoints.value = mutableListOf()
+        _timeInSeconds.value = 0L
+        _distance.value = 0f
     }
 
     fun getAllLocations() {
@@ -67,6 +71,12 @@ class RunViewModel @Inject constructor(
 
         }
 
+    }
+
+    fun saveRunDetails(runDetails: RunDetails){
+        viewModelScope.launch {
+            runDetailsRepository.saveRunDetails(runDetails)
+        }
     }
 
 

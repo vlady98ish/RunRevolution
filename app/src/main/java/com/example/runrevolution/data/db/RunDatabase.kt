@@ -8,7 +8,7 @@ import com.example.runrevolution.domain.model.RunDetails
 
 @Database(
     entities = [RunDetails::class, LocationDetails::class],
-    version = 2
+    version = 3
 )
 @TypeConverters(Converters::class)
 abstract class RunDatabase : RoomDatabase() {

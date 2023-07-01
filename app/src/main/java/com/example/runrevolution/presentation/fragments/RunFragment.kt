@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.provider.Settings
 import android.util.Log
 
@@ -24,6 +25,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.runrevolution.R
 import com.example.runrevolution.databinding.FragmentRunBinding
 import com.example.runrevolution.domain.model.LocationDetails
+import com.example.runrevolution.domain.model.RunDetails
 import com.example.runrevolution.presentation.service.RunningService
 import com.example.runrevolution.presentation.service.RunningService.Companion.ACTION_START_SERVICE
 import com.example.runrevolution.presentation.service.RunningService.Companion.ACTION_STOP_SERVICE
@@ -34,10 +36,12 @@ import com.example.runrevolution.utils.other.TimeUtility
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Calendar
 
 
 @AndroidEntryPoint
@@ -133,6 +137,34 @@ class RunFragment : Fragment(R.layout.fragment_run) {
         }
     }
 
+    private fun zoomForSnapshot(){
+        val builder = LatLngBounds.Builder()
+        for (marker in runViewModel.locationPoints.value!!) {
+            builder.include(LatLng(marker.latitude, marker.longitude))
+        }
+        val bounds = builder.build()
+        val padding = 100 // offset from edges of the map in pixels
+        val cu = CameraUpdateFactory
+            .newLatLngBounds(
+                bounds,
+                binding.runMAPView.width,
+                binding.runMAPView.height,
+                (binding.runMAPView.height * 0.05f).toInt())
+        map?.moveCamera(cu)
+    }
+
+    private fun endAndSaveRun(){
+        map?.snapshot { bmp ->
+            val date = Calendar.getInstance().timeInMillis
+            val avgSpeed = runViewModel.speed.value!!
+            val distance = runViewModel.distance.value!!
+            val time = runViewModel.timeInSeconds.value!!
+            val run = RunDetails(bmp, date, avgSpeed, distance, time)
+            runViewModel.saveRunDetails(run)
+            clear()
+        }
+    }
+
 
     @SuppressLint("MissingPermission")
     private fun setListener() {
@@ -146,7 +178,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
                 map?.isMyLocationEnabled = true
                 if (isServiceRunning) {
                     sendActionToService(ACTION_STOP_SERVICE)
-                    clear()
+                    endAndSaveRun()
                 } else {
                     sendActionToService(ACTION_START_SERVICE)
                 }

@@ -11,9 +11,8 @@ data class RunDetails(
     var mapSnapShot: Bitmap? = null,
     var timeDate: Long = 0L,
     var avgSpeed: Float = 0f,
-    var distance: Int = 0,
+    var distance: Float = 0f,
     var time: Long = 0L,
-    var calories: Int = 0
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

@@ -57,7 +57,7 @@ class LocationHandlerUtil(
 
     private fun checkLocationPermission() {
         if (!context.hasLocationPermission()) {
-            throw LocationClient.LocationException("Missing location permission")
+            throw Exception("Missing location permission")
         }
     }
 
@@ -71,7 +71,7 @@ class LocationHandlerUtil(
 
 
         if (!isGpsEnabled && !isNetworkEnabled) {
-            throw LocationClient.LocationException("GPS is disabled")
+            throw Exception("GPS is disabled")
         }
     }
 
