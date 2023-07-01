@@ -42,6 +42,7 @@ import com.google.android.gms.maps.model.PolylineOptions
 
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -54,6 +55,8 @@ class RunFragment : Fragment(R.layout.fragment_run) {
     private var isServiceRunning = false
     private var polyline: Polyline? = null
 
+    @set:Inject
+     var weight = 70f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

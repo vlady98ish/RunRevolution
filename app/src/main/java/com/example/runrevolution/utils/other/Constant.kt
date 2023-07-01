@@ -9,6 +9,12 @@ object Constant {
     const val LOCATION_TABLE = "location_table"
     const val DATABASE_NAME = "running_db"
 
+    const val SHARED_PREFERENCES_NAME = "sharedPref"
+    const val KEY_FIRST_TIME = "KEY_FIRST_TIME"
+    const val KEY_NAME = "KEY_NAME"
+    const val KEY_WEIGHT = "KEY_WEIGHT"
+    const val KEY_HEIGHT = "KEY_HEIGHT"
+
 
     const val PERMISSION_REQUEST_CODE = 123
 
