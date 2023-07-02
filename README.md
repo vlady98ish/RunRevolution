@@ -39,6 +39,10 @@ The app is divided into three main layers:
 - **Domain Layer**: Where business logic is handled. This is also where entities and repository interfaces are defined.
 - **Presentation Layer**: Handles everything related to the UI of the app. This includes Activities, Fragments, ViewModels, and Adapters.
 
+
+##Video
+[App Demonstration Video](https://youtu.be/iaetOtkN_LE)
+
 The app uses a `RunningService` for tracking a user's run in the background.
 ## License
 This project is licensed under the MIT License.
