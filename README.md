@@ -40,3 +40,5 @@ The app is divided into three main layers:
 - **Presentation Layer**: Handles everything related to the UI of the app. This includes Activities, Fragments, ViewModels, and Adapters.
 
 The app uses a `RunningService` for tracking a user's run in the background.
+## License
+This project is licensed under the MIT License.
