@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HistoryViewModel @Inject constructor(
     private val runDetailsRepository: RunDetailsRepository
-) : ViewModel()  {
+) : ViewModel() {
 
     private val _runningDetails: MutableLiveData<List<RunDetails>> = MutableLiveData()
     val runningDetails: LiveData<List<RunDetails>> = _runningDetails
@@ -26,7 +26,7 @@ class HistoryViewModel @Inject constructor(
     }
 
     private fun getAllRunDetails() {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             val runDetails = runDetailsRepository.getRunDetails()
             _runningDetails.postValue(runDetails)
         }

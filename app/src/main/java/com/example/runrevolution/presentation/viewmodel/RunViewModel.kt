@@ -73,7 +73,7 @@ class RunViewModel @Inject constructor(
 
     }
 
-    fun saveRunDetails(runDetails: RunDetails){
+    fun saveRunDetails(runDetails: RunDetails) {
         viewModelScope.launch {
             runDetailsRepository.saveRunDetails(runDetails)
         }

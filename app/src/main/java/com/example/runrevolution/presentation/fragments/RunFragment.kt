@@ -56,7 +56,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
     private var polyline: Polyline? = null
 
     @set:Inject
-     var weight = 70f
+    var weight = 70f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -140,29 +140,38 @@ class RunFragment : Fragment(R.layout.fragment_run) {
         }
     }
 
-    private fun zoomForSnapshot(){
+//    private fun zoomForSnapshot(){
+//        val builder = LatLngBounds.Builder()
+//        for (marker in runViewModel.locationPoints.value!!) {
+//            builder.include(LatLng(marker.latitude, marker.longitude))
+//        }
+//        val bounds = builder.build()
+//
+//        // Use animateCamera for smoother transition
+//        val padding = (binding.runMAPView.height * 0.30).toInt() // 10% padding
+//        map?.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding))
+//    }
+
+    private fun endAndSaveRun() {
         val builder = LatLngBounds.Builder()
         for (marker in runViewModel.locationPoints.value!!) {
             builder.include(LatLng(marker.latitude, marker.longitude))
         }
         val bounds = builder.build()
-        val padding = 100 // offset from edges of the map in pixels
-        val cu = CameraUpdateFactory
-            .newLatLngBounds(
-                bounds,
-                binding.runMAPView.width,
-                binding.runMAPView.height,
-                (binding.runMAPView.height * 0.05f).toInt())
-        map?.moveCamera(cu)
-    }
 
-    private fun endAndSaveRun(){
+        val width = binding.runMAPView.width
+        val height = binding.runMAPView.height
+        val padding = (height * 0.10).toInt() // you can adjust this padding
+
+        val cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding)
+        map?.moveCamera(cu)
         map?.snapshot { bmp ->
             val date = Calendar.getInstance().timeInMillis
             val avgSpeed = runViewModel.speed.value!!
             val distance = runViewModel.distance.value!!
             val time = runViewModel.timeInSeconds.value!!
-            val run = RunDetails(bmp, date, avgSpeed, distance, time)
+            val calories = (distance * weight * 0.75).toInt()
+            val run = RunDetails(bmp, date, avgSpeed, distance, time, calories)
             runViewModel.saveRunDetails(run)
             clear()
         }
@@ -333,6 +342,7 @@ class RunFragment : Fragment(R.layout.fragment_run) {
                     onLocationPermissionGranted()
                 } else {
                     if (!shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+//                        zoomForSnapshot()
                         askUserForOpeningAppSettings()
                     } else {
                         Toast.makeText(requireContext(), "Permission Denied", Toast.LENGTH_SHORT)

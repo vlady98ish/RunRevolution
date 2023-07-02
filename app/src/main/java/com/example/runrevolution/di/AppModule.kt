@@ -11,6 +11,7 @@ import com.example.runrevolution.data.repository.RunDetailsRepositoryImpl
 import com.example.runrevolution.domain.repository.LocationRepository
 import com.example.runrevolution.domain.repository.RunDetailsRepository
 import com.example.runrevolution.utils.other.Constant.DATABASE_NAME
+import com.example.runrevolution.utils.other.Constant.KEY_FIRST_TIME
 import com.example.runrevolution.utils.other.Constant.KEY_HEIGHT
 import com.example.runrevolution.utils.other.Constant.KEY_NAME
 import com.example.runrevolution.utils.other.Constant.KEY_WEIGHT
@@ -77,18 +78,21 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesName(sharedPreferences: SharedPreferences) = sharedPreferences.getString(KEY_NAME, "") ?: ""
+    fun providesName(sharedPreferences: SharedPreferences) =
+        sharedPreferences.getString(KEY_NAME, "") ?: ""
 
 
     @Singleton
     @Provides
     fun providesWeight(sharedPreferences: SharedPreferences) = sharedPreferences.getFloat(
-        KEY_WEIGHT, 70f)
+        KEY_WEIGHT, 70f
+    )
 
 
     @Singleton
     @Provides
     fun provideIsFirsTime(sharedPreferences: SharedPreferences) = sharedPreferences.getBoolean(
-        KEY_NAME, true)
+        KEY_FIRST_TIME, true
+    )
 
 }

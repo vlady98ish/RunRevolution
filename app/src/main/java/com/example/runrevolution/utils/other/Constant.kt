@@ -36,4 +36,16 @@ object Constant {
 
     const val MET_RATIO = 9.0
 
+
+     const val LOCATION_NAME = "location"
+
+    const val RUNNING_ = "Running..."
+
+    const val START_TIME = "00:00:00"
+
+
+    const val CHANGES_APPLIED = "Changes applied"
+    const val PLEASE_FILL_OUT_ALL_FIELDS = "Please fill out all fields"
+
+
 }

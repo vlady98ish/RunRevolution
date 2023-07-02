@@ -1,13 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/roads"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        />
 
 
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="SETTINGS FRAGMENT"
+        android:text="Settings"
+        android:textColor="@color/white"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
         />
+    <EditText
+        android:id="@+id/settings_login_name"
+        android:layout_width="270dp"
+        android:layout_height="48dp"
+        android:background="@drawable/white_button_bg"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="Your Name"
+        android:layout_centerInParent="true"
+        android:inputType="text"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+         />
+
+
+    <EditText
+        android:id="@+id/settings_login_weight"
+        android:layout_below="@+id/settings_login_name"
+        android:layout_centerHorizontal="true"
+        android:layout_width="270dp"
+        android:layout_height="48dp"
+        android:background="@drawable/white_button_bg"
+        android:drawableStart="@drawable/ic_weight"
+        android:drawablePadding="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Your Weight"
+        android:inputType="text"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+         />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_below="@+id/settings_login_weight"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="32dp"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="176dp"
+        android:background="@drawable/button_bg"
+        android:text="Submit"
+        app:backgroundTint="@null"
+        />
+
+
+
+
+
 </RelativeLayout>

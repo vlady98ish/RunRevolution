@@ -24,7 +24,10 @@ import com.example.runrevolution.utils.other.TimeUtility
 
 import com.example.runrevolution.data.db.LocationHandlerUtil
 import com.example.runrevolution.domain.repository.LocationClient
+import com.example.runrevolution.utils.other.Constant.LOCATION_NAME
 import com.example.runrevolution.utils.other.Constant.MET_RATIO
+import com.example.runrevolution.utils.other.Constant.RUNNING_
+import com.example.runrevolution.utils.other.Constant.START_TIME
 
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +42,9 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+
+
 
 @AndroidEntryPoint
 class RunningService : LifecycleService() {
@@ -58,9 +64,9 @@ class RunningService : LifecycleService() {
     private var timeStart = 0L
     private var lastSecond = 0L
     private val notification by lazy {
-        NotificationCompat.Builder(this, "location")
-            .setContentTitle("Running...")
-            .setContentText("00:00:00")
+        NotificationCompat.Builder(this, LOCATION_NAME)
+            .setContentTitle(RUNNING_)
+            .setContentText(START_TIME)
             .setSmallIcon(R.drawable.ic_run)
             .setOngoing(true)
             .setAutoCancel(false)
@@ -126,7 +132,6 @@ class RunningService : LifecycleService() {
     private fun start() {
         isRunning.value = true
         startTimer()
-//        updateCalories()
         startLocationUpdates()
         startForegroundNotification()
         updateNotification()
@@ -164,17 +169,6 @@ class RunningService : LifecycleService() {
         previousLocation = location
     }
 
-
-//    private fun updateCalories() {
-//
-//        timeInSeconds.observe(this, Observer {
-//            val minutes = (timeInSeconds.value ?: 0.0).toDouble() / 60.0
-//            val calories = MET_RATIO * 80.0 * (minutes / 60.0)
-//            totalCalories.postValue(calories)
-//        })
-//
-//
-//    }
 
     private fun updateNotification() {
         timeInSeconds.observe(this, Observer { ms ->

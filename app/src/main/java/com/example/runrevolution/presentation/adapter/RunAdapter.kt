@@ -15,30 +15,32 @@ import com.example.runrevolution.utils.other.TimeUtility
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>()  {
+class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
 
-    inner class RunViewHolder(private val binding: ItemRunDetailsBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(runDetails: RunDetails){
+    inner class RunViewHolder(private val binding: ItemRunDetailsBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(runDetails: RunDetails) {
 
-                Glide.with(binding.ivRunImage).load(runDetails.mapSnapShot).into(binding.ivRunImage)
+            Glide.with(binding.ivRunImage).load(runDetails.mapSnapShot).into(binding.ivRunImage)
 
-                val calendar = Calendar.getInstance().apply {
-                    timeInMillis = runDetails.timeDate
-                }
-                val dateFormat = SimpleDateFormat(" dd.MM.yy", Locale.getDefault())
-                binding.tvDate.text ="Date: " +  dateFormat.format(calendar.time)
+            val calendar = Calendar.getInstance().apply {
+                timeInMillis = runDetails.timeDate
+            }
+            val dateFormat = SimpleDateFormat(" dd.MM.yy", Locale.getDefault())
+            binding.tvDate.text = "Date: " + dateFormat.format(calendar.time)
 
-            val avgSpeed = "Avg. Speed " +String.format("%.2f", runDetails.avgSpeed) + " km/h"
+            val avgSpeed = "Avg. Speed " + String.format("%.2f", runDetails.avgSpeed) + " km/h"
             binding.tvAvgSpeed.text = avgSpeed
 
             val distanceInKm = "Distance " + String.format("%.2f", runDetails.distance) + " km"
             binding.tvDistance.text = distanceInKm
 
-            binding.tvTime.text = "Duration: " +  TimeUtility.getFormattedTimeEnd(runDetails.time)
+            binding.tvTime.text = "Duration: " + TimeUtility.getFormattedTimeEnd(runDetails.time)
 
+            val calories = "Calories " + runDetails.calories + " kcal"
+            binding.tvCalories.text = calories
         }
     }
-
 
 
     val diffCallback = object : DiffUtil.ItemCallback<RunDetails>() {
@@ -51,7 +53,6 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>()  {
         }
 
 
-
     }
 
     val differ = AsyncListDiffer(this, diffCallback)
@@ -60,9 +61,9 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>()  {
     fun submitList(list: List<RunDetails>) = differ.submitList(list)
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunViewHolder {
-        val binding = ItemRunDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemRunDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RunViewHolder(binding)
     }
 

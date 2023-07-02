@@ -16,8 +16,7 @@ interface LocationDAO {
 
     @Transaction
     suspend fun updateLocationDetails(location: LocationDetails) {
-        // This deletes previous locations to keep the database small. If you want to store a full location history, remove this line.
-            insertLocationDetails(location)
+        insertLocationDetails(location)
 
     }
 

@@ -19,7 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class HistoryFragment : Fragment(R.layout.fragment_history) {
 
 
-
     private val historyViewModel: HistoryViewModel by viewModels()
 
     private lateinit var runAdapter: RunAdapter
@@ -40,7 +39,7 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
 
     }
 
-    private fun setUpRecyclerView()  = binding.rvHistory.apply {
+    private fun setUpRecyclerView() = binding.rvHistory.apply {
         runAdapter = RunAdapter()
         adapter = runAdapter
         layoutManager = LinearLayoutManager(requireContext())

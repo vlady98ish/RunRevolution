@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
-
     >
 
     <ImageView
@@ -56,6 +55,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="AVG. SPEED"
+
+        android:textColor="@color/white"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvCalories"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/tvAvgSpeed"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Calories Burned"
 
         android:textColor="@color/white"
         />
