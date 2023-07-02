@@ -18,7 +18,6 @@ RunRevolution is a mobile application designed to help runners track their route
 - **Dagger/Hilt or Koin**: Used for dependency injection (please replace with your specific DI library).
 - **LiveData**: Used for data observation.
 - **Android Jetpack**: A suite of libraries, tools, and guidance to help developers write high-quality apps easier. These libraries include Navigation, LiveData, ViewModel, etc.
-- **Other Libraries**: (Please add any other libraries or technologies you have used)
 
 ## Getting Started
 
