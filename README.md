@@ -40,7 +40,7 @@ The app is divided into three main layers:
 - **Presentation Layer**: Handles everything related to the UI of the app. This includes Activities, Fragments, ViewModels, and Adapters.
 
 
-##Video
+## Video
 [App Demonstration Video](https://youtu.be/iaetOtkN_LE)
 
 The app uses a `RunningService` for tracking a user's run in the background.
