@@ -15,7 +15,7 @@ RunRevolution is a mobile application designed to help runners track their route
 - **MVVM Architecture**: The project follows the Model-View-ViewModel software architectural pattern.
 - **Repository Pattern**: Used for abstracting the data layer.
 - **Google Maps API**: For displaying and tracking running routes.
-- **Dagger/Hilt or Koin**: Used for dependency injection (please replace with your specific DI library).
+- **Dagger/Hilt**: Used for dependency injection (please replace with your specific DI library).
 - **LiveData**: Used for data observation.
 - **Android Jetpack**: A suite of libraries, tools, and guidance to help developers write high-quality apps easier. These libraries include Navigation, LiveData, ViewModel, etc.
 
